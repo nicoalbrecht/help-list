@@ -50,6 +50,7 @@ block content
                                             i.fas.fa-cog.fa-spin(id="locLoadingIcon")
 
                     .accordion#offer-accordion
+                        if offer.length > 0
                             each offer, index in offers
                                 .card
                                     .card-header(id=offer.id+"-heading")
@@ -74,6 +75,8 @@ block content
                                                         else
                                                             span Keine Telefonnummer angegeben 
                                             p.card-text #{offer.description}
+                        else
+                            .alert.alert-secondary(role="alert") Keine Angebote gefunden!
                     br
                     nav
                         ul.pagination.justify-content-center

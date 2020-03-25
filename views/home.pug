@@ -11,13 +11,16 @@ block content
         .col-md-12
             h4 Neue Angebote:
             div.list-group
-                each offer in latestOffers
-                    div.list-group-item
-                        .d-flex.w-100.justify-content-between
-                            h6.mb-1 #{offer.title}
-                            small #{offer.createdAt}
-                        p #{offer.description}
-                        small #{offer.category.title}
+                if
+                    each offer in latestOffers
+                        div.list-group-item
+                            .d-flex.w-100.justify-content-between
+                                h6.mb-1 #{offer.title}
+                                small #{offer.createdAt}
+                            p #{offer.description}
+                            small #{offer.category.title}
+                else
+                    .alert.alert-secondary(role="alert") Keine Angebote gefunden!
             br
             p
                 a.btn.btn-primary.btn-block(href='/offers', role='button') Zur Übersicht aller verfügbarer Angebote (#{offerCount}) »
