@@ -2,26 +2,32 @@ extends layout
 
 block content
     h1 Nachbarschaftshilfe Wangen
-    p.lead A boilerplate for Node.js web applications.
+    p.lead Eine Website zum Suchen und Anbieten von Hilfeleistungen.
     hr
     .row
-        .col-md-6
-            h2 Heading
-            p Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.
+        .col-md-12
+            .alert.alert-warning(role="alert") 
+                | WICHTIG: Die 110 ist <b>nicht</b> für Fragen zu Covid-19 zuständig. Bei Fragen bitte die <a href="tel:071190439555">+49 711 904-39555</a> anrufen!
+        .col-md-12
+            h4 Neue Angebote:
+            div.list-group
+                each offer in latestOffers
+                    div.list-group-item
+                        .d-flex.w-100.justify-content-between
+                            h6.mb-1 #{offer.title}
+                            small #{offer.createdAt}
+                        p #{offer.description}
+                        small #{offer.category.title}
+            br
             p
-                a.btn.btn-raised(href='#', role='button') View details »
+                a.btn.btn-primary.btn-block(href='/offers', role='button') Zur Übersicht aller verfügbarer Angebote (#{offerCount}) »
         .col-md-6
-            h2 Heading
-            p Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.
+            h4 Informationen zu Covid-19
+            p Allgemeine Informationen über das neue Coronavirus/Covid-19 findet man auf der offiziellen Seite Bundeszentrale für gesundheitliche Aufklärung (BZgA). Informationen aus anderen Quellen sollten auf jeden Fall verifiziert werden, da sich im Netz etliche "Fake-News" finden lassen. 
             p
-                a.btn.btn-raised(href='#', role='button') View details »
+                a.btn.btn-success(href='https://www.infektionsschutz.de/coronavirus/', role='button', target="_blank") Details »
         .col-md-6
-            h2 Heading
-            p Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.
+            h4 Covid-19 in Wangen
+            p Übersicht aller Informationen und Meldungen in Wangen.
             p
-                a.btn.btn-raised(href='#', role='button') View details »
-        .col-md-6
-            h2 Heading
-            p Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.
-            p
-                a.btn.btn-raised(href='#', role='button') View details »
+                a.btn.btn-success(href='https://www.wangen.de/corona-meldungen.html', role='button', target="_blank") Details »

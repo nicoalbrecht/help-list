@@ -9,6 +9,9 @@ block content
         #location-controls{
             display: none;
         }
+        #radius-controls{
+            display: none;
+        }
 
     h2 Angebote Erstellen
     hr
@@ -54,8 +57,19 @@ block content
             .col-md-12
                 #map
                 input(type="hidden", name="location", id="location")
-        .form-group.row#location-controls
-            label.col-md-12.col-form-label.font-weight-bold.text-left(for='password') Im Umkreis von
+        .row#location-controls
+            input.form-control(type="hidden", name="addressPostCode", id="addressPostCode", readonly)
+            input.form-control(type="hidden", name="addressCountry", id="addressCountry", readonly)
+            .col-md-6
+                .form-group
+                    label.font-weight-bold(for='addressCity') Stadt
+                    input.form-control(type="text", name="addressCity", id="addressCity", readonly)
+            .col-md-6
+                .form-group
+                    label.font-weight-bold(for='addressStreet') Adresse
+                    input.form-control(type="text", name="addressStreet", id="addressStreet", readonly)
+        .form-group.row#radius-controls
+            label.col-md-12.col-form-label.font-weight-bold.text-left(for='radius') Im Umkreis von
             .col-md-6(style="display: inline-block")
                 .input-group
                     input.form-control(type="number", name="radius", id="radius" value="500")
@@ -93,6 +107,7 @@ block content
                     zoom: 14
                 });
                 google.maps.event.addListener(map, 'click', function (event) {
+                    
                     if(marker) marker.setMap(null);
                     console.log(event);
                     var _l = {
@@ -100,7 +115,10 @@ block content
                         lng: event.latLng.lng(),
                         radius: 500
                     }
-                    console.log(_l);
+                    updateLocDetails(_l.lat, _l.lng);
+                    //- fetch(`https://maps.googleapis.com/maps/api/place/details/json?place_id=${req.params.id}&key=${google_map_api_key}&fields=name,geometry`)
+                    //-     .then(res => res.json)
+                    //-     .then(data => {console.log(data)});
                     document.querySelector('#location').value = JSON.stringify(_l);
                     marker = new google.maps.Circle({
                         strokeColor: '#FF0000',
@@ -118,23 +136,33 @@ block content
                         var _l = JSON.parse(document.querySelector('#location').value);
                         _l.radius = marker.getRadius().toFixed();
                         document.querySelector('#location').value = JSON.stringify(_l);
-                        console.log(_l);
                     });
                     google.maps.event.addListener(marker, 'center_changed', function() {
-                        console.log(document.querySelector('#location').value);
                         var _l = JSON.parse(document.querySelector('#location').value);
                         _l.lat = marker.getCenter().lat();
                         _l.lng = marker.getCenter().lng();
-                        console.log(marker.getCenter());
-                        console.log(_l);
+                        updateLocDetails(_l.lat, _l.lng);
                         document.querySelector('#location').value = JSON.stringify(_l);
                     });
-                    document.querySelector('#location-controls').style.display = 'block';
+                    document.querySelector('#location-controls').style.display = 'flex';
+                    document.querySelector('#radius-controls').style.display = 'block';
                 });
             }
             function removeLocation() {
                 if(marker) marker.setMap(null);
                 document.querySelector('#location-controls').style.display = 'none';
+                document.querySelector('#radius-controls').style.display = 'none';
+            }
+            function updateLocDetails(lat, lng) {
+                fetch(`http://open.mapquestapi.com/geocoding/v1/reverse?key=aAoxyLfOxLHP41WTY0qzr5lxwmcftQRi&location=${lat},${lng}`)
+                    .then(res => res.json())
+                    .then(data => {
+                        var _d = data.results[0].locations[0];
+                        document.querySelector('#addressPostCode').value = _d.postalCode;
+                        document.querySelector('#addressCity').value = _d.adminArea5;
+                        document.querySelector('#addressCountry').value = _d.adminArea1;
+                        document.querySelector('#addressStreet').value = _d.street;
+                    });
             }
             document.querySelector('#clear-location').addEventListener('click', function(e) {
                 e.preventDefault();

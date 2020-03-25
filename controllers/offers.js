@@ -22,7 +22,7 @@ exports.getOverview = async (req, res, next) => {
 exports.createOfferView = async (req, res, next) => {
     const categories = await Category.find().populate('category').exec();
     res.render('offers/create', {
-        title: 'Angebots Erstellen',
+        title: 'Angebot Erstellen',
         categories,
         google_map_api_key: process.env.GOOGLE_MAP_API_KEY
     });

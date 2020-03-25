@@ -3,8 +3,8 @@
 const validator = require('validator');
 const axios = require('axios');
 const crypto = require('crypto');
-const Offer = require('../models/Offer');
-const locationUtils = require('../utils/locationUtils');
+const Offer = require('../../models/Offer');
+const locationUtils = require('../../utils/locationUtils');
 
 /**
  * GET /api
