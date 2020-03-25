@@ -73,7 +73,7 @@
 - Fixed issue with Popper.js integration (thanks to @binarymax and @Furchin)
 - Fixed wrapping issues in the navbar and logo indentation (thanks to @estevanmaito)
 - Fixed MongoDB deprecation warnings
-- Add production error handler middleware that returns 500 to handle errors.  Also, handle server errors in the lastfm API example (thanks to @jagatfx)
+- Add production error handler middleware that returns 500 to handle errors.    Also, handle server errors in the lastfm API example (thanks to @jagatfx)
 - Added autocomplete properties to the views to address Chrome warnings (thanks to @peterblazejewicz)
 - Fixed issues in the unit tests.
 - Fixed issues in the modern theme variables and imports to be consistent (thanks to @monkeywithacupcake)
@@ -126,7 +126,7 @@
 - Dependency updates
 
 ### 4.4.0 (March 23, 2018)
-- Added Docker support (Thanks to @gregorysobotka, @praveenweb, @ryanhanwu).  The initial integration has also been upgraded to use NodeJS 8 and Mongo 3.6.
+- Added Docker support (Thanks to @gregorysobotka, @praveenweb, @ryanhanwu).    The initial integration has also been upgraded to use NodeJS 8 and Mongo 3.6.
 - Removed dependency on async in favor of using promises (@fmcarvalho). Note that the promise support will be upgraded in the upcoming releases to remove the use of Bluebird.
 - The contact form will no longer ask for the user's name and email address if they have logged-in already
 - Adding a confirmation prompt when a user asks for their account to be deleted
@@ -187,7 +187,7 @@
 
 ### 4.0.0 (May 13, 2016)
 - **ECMAScript 2015 support!** (Make sure you are using Node.js 6.0+)
- - Thanks  @vanshady and @prashcr
+ - Thanks    @vanshady and @prashcr
 - Added `<meta theme-color>` support for *Chrome for Android*
 - Added Yahoo Finance API example
 - Updated Aviary API example

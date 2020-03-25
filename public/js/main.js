@@ -1,6 +1,5 @@
 /* eslint-env jquery, browser */
 $(document).ready(() => {
-
-  // Place JavaScript code here...
-
+    $('[data-toggle="popover"]').popover();
+    $('[data-toggle="tooltip"]').tooltip();
 });

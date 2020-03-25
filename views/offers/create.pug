@@ -1,0 +1,155 @@
+extends ../layout
+
+block content
+    style.
+        #map {
+            width: 100%;
+            height: 500px;
+        }
+        #location-controls{
+            display: none;
+        }
+
+    h2 Angebote Erstellen
+    hr
+    form(id='signup-form', method='POST', action="/api/offer")
+        input(type='hidden', name='_csrf', value=_csrf)
+        .form-group.row
+            label.col-md-12.col-form-label.font-weight-bold.text-left(for='title') Angebotstitel
+            .col-md-12
+                input.form-control(type='text', name='title', id='title', placeholder='Angebotstitel', autofocus, required)
+        .form-group.row
+            label.col-md-12.col-form-label.font-weight-bold.text-left(for='category') Kategorie
+            .col-md-12
+                select.form-control(name="category", id="category")
+                    each category in categories
+                        option(value=category._id) #{category.title}
+        .form-group.row
+            label.col-md-12.col-form-label.font-weight-bold.text-left(for='description') Beschreibung/Details
+            .col-md-12
+                textarea(name="description", rows="5", id="description", style="width: 100%", required)
+        .form-group.row
+            label.col-md-12.col-form-label.font-weight-bold.text-left Zeitenraum:
+            .col-md-6
+                .input-group
+                    span.input-group-prepend
+                        span.input-group-text Von
+                    input.form-control(type="time", name="startTime", id="startTime")
+                    span.input-group-append
+                        span.input-group-text Uhr
+            .col-md-6
+                .input-group
+                    span.input-group-prepend
+                        span.input-group-text Bis
+                    input.form-control(type="time", name="endTime", id="endTime")
+                    span.input-group-append
+                        span.input-group-text Uhr
+        .form-group.row
+            .col-md-12
+                .custom-control.custom-checkbox
+                    input.custom-control-input(type="checkbox", name="onlyWeekendCb", id="onlyWeekendCb")
+                    label.custom-control-label.font-weight-bold(for="onlyWeekendCb") Nur am Wochenende?
+        .form-group.row
+            label.col-md-12.col-form-label.font-weight-bold.text-left Wo ist das Angebot verfügbar? 
+            .col-md-12
+                #map
+                input(type="hidden", name="location", id="location")
+        .form-group.row#location-controls
+            label.col-md-12.col-form-label.font-weight-bold.text-left(for='password') Im Umkreis von
+            .col-md-6(style="display: inline-block")
+                .input-group
+                    input.form-control(type="number", name="radius", id="radius" value="500")
+                    span.input-group-append
+                        span.input-group-text Meter
+            .col-md-6(style="display: inline-block")
+                button.btn.btn-danger.btn-block(id="clear-location") Standort entfernen (Angebot ist Standortunabhängig)
+        br
+        .form-group.row
+            h5 Kontakt Informationen
+        .form-group.row
+            label.col-md-12.col-form-label.font-weight-bold.text-left(for='email') Name
+            .col-md-12
+                input.form-control(type='text', name='name', id='name', placeholder='Name', required)
+        .form-group.row
+            label.col-md-12.col-form-label.font-weight-bold.text-left(for='email') E-Mail
+            .col-md-12
+                input.form-control(type='email', name='email', id='email', placeholder='E-Mail Adresse für Kontaktaufnahme', required)
+        .form-group.row
+            label.col-md-12.col-form-label.font-weight-bold.text-left(for='email') Telefon
+            .col-md-12
+                input.form-control(type='tel', name='phone', id='phone', placeholder='Telefonnummer für Kontaktaufnahme')
+        br
+        .form-group.row
+            button.btn.btn-success.btn-block(type='submit')
+                i.fas.fa-user-plus.fa-sm
+                | Angebot veröffentlichen
+        script(src=`https://www.google.com/recaptcha/api.js?render=6LexmuIUAAAAAPtIQGWYhTtgq_T7K89jbWpyE5hH`)
+        script.
+            var map;
+            var marker;
+            function initMap() {
+                map = new google.maps.Map(document.getElementById('map'), {
+                    center: { lat: 47.6883395, lng: 9.8316466 },
+                    zoom: 14
+                });
+                google.maps.event.addListener(map, 'click', function (event) {
+                    if(marker) marker.setMap(null);
+                    console.log(event);
+                    var _l = {
+                        lat: event.latLng.lat(),
+                        lng: event.latLng.lng(),
+                        radius: 500
+                    }
+                    console.log(_l);
+                    document.querySelector('#location').value = JSON.stringify(_l);
+                    marker = new google.maps.Circle({
+                        strokeColor: '#FF0000',
+                        strokeOpacity: 0.8,
+                        strokeWeight: 2,
+                        fillColor: '#FF0000',
+                        fillOpacity: 0.35,
+                        center: event.latLng,
+                        radius: 500,
+                        editable: true,
+                        map: map,
+                    });
+                    google.maps.event.addListener(marker, 'radius_changed', function() {
+                        document.querySelector('#radius').value = marker.getRadius().toFixed();
+                        var _l = JSON.parse(document.querySelector('#location').value);
+                        _l.radius = marker.getRadius().toFixed();
+                        document.querySelector('#location').value = JSON.stringify(_l);
+                        console.log(_l);
+                    });
+                    google.maps.event.addListener(marker, 'center_changed', function() {
+                        console.log(document.querySelector('#location').value);
+                        var _l = JSON.parse(document.querySelector('#location').value);
+                        _l.lat = marker.getCenter().lat();
+                        _l.lng = marker.getCenter().lng();
+                        console.log(marker.getCenter());
+                        console.log(_l);
+                        document.querySelector('#location').value = JSON.stringify(_l);
+                    });
+                    document.querySelector('#location-controls').style.display = 'block';
+                });
+            }
+            function removeLocation() {
+                if(marker) marker.setMap(null);
+                document.querySelector('#location-controls').style.display = 'none';
+            }
+            document.querySelector('#clear-location').addEventListener('click', function(e) {
+                e.preventDefault();
+                removeLocation();
+            });
+            document.querySelector('#radius').addEventListener('keyup', function(e) {
+                if(marker && e.target.value) marker.setRadius(parseFloat(e.target.value));
+            });
+            document.querySelector('#radius').addEventListener('focusout', function(e) {
+                if(marker && !e.target.value) marker.setRadius(parseFloat(JSON.parse(document.querySelector('#location').value).radius));
+                if(!e.target.value) document.querySelector('#radius').value = JSON.parse(document.querySelector('#location').value).radius;
+            });
+            grecaptcha.ready(function() {
+                grecaptcha.execute('6LexmuIUAAAAAPtIQGWYhTtgq_T7K89jbWpyE5hH', {action: 'homepage'}).then(function(token) {
+                    console.log(token);
+                });
+            });
+        script(async defer src=`https://maps.googleapis.com/maps/api/js?key=${google_map_api_key}&callback=initMap`)

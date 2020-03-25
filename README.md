@@ -64,9 +64,9 @@ Table of Contents
 - [FAQ](#faq)
 - [How It Works](#how-it-works-mini-guides)
 - [Cheatsheets](#cheatsheets)
-    - [ES6](#-es6-cheatsheet)
-    - [JavaScript Date](#-javascript-date-cheatsheet)
-    - [Mongoose Cheatsheet](#mongoose-cheatsheet)
+        - [ES6](#-es6-cheatsheet)
+        - [JavaScript Date](#-javascript-date-cheatsheet)
+        - [Mongoose Cheatsheet](#mongoose-cheatsheet)
 - [Deployment](#deployment)
 - [Docker](#docker)
 - [Production](#production)
@@ -145,7 +145,7 @@ You must start ngrok after starting the project.
 Next, you must use the https URL defined by ngrok, for example, `https://hackaton.ngrok.io`
 
 **Note:** I highly recommend installing [Nodemon](https://github.com/remy/nodemon).
-It watches for any changes in your  node.js app and automatically restarts the
+It watches for any changes in your    node.js app and automatically restarts the
 server. Once installed, instead of `node app.js` use `nodemon app.js`. It will
 save you a lot of time in the long run, because you won't need to manually
 restart the server each time you make a small change in code. To install, run
@@ -384,107 +384,107 @@ The same goes for other providers.
 Project Structure
 -----------------
 
-| Name                               | Description                                                  |
+| Name                                                             | Description                                                                                                    |
 | ---------------------------------- | ------------------------------------------------------------ |
-| **config**/passport.js             | Passport Local and OAuth strategies, plus login middleware.  |
-| **controllers**/api.js             | Controller for /api route and all api examples.              |
-| **controllers**/contact.js         | Controller for contact form.                                 |
-| **controllers**/home.js            | Controller for home page (index).                            |
-| **controllers**/user.js            | Controller for user account management.                      |
-| **models**/User.js                 | Mongoose schema and model for User.                          |
-| **public**/                        | Static assets (fonts, css, js, img).                         |
-| **public**/**js**/application.js   | Specify client-side JavaScript dependencies.                 |
-| **public**/**js**/main.js          | Place your client-side JavaScript here.                      |
-| **public**/**css**/main.scss       | Main stylesheet for your app.                                |
-| **public/css/themes**/default.scss | Some Bootstrap overrides to make it look prettier.           |
-| **views/account**/                 | Templates for *login, password reset, signup, profile*.      |
-| **views/api**/                     | Templates for API Examples.                                  |
-| **views/partials**/flash.pug       | Error, info and success flash notifications.                 |
-| **views/partials**/header.pug      | Navbar partial template.                                     |
-| **views/partials**/footer.pug      | Footer partial template.                                     |
-| **views**/layout.pug               | Base template.                                               |
-| **views**/home.pug                 | Home page template.                                          |
-| .dockerignore                      | Folder and files ignored by docker usage.                    |
-| .env.example                       | Your API keys, tokens, passwords and database URI.           |
-| .eslintrc                          | Rules for eslint linter.                                     |
-| .gitignore                         | Folder and files ignored by git.                             |
-| .travis.yml                        | Configuration files for continuous integration.              |
-| app.js                             | The main application file.                                   |
-| docker-compose.yml                 | Docker compose configuration file.                           |
-| Dockerfile                         | Docker configuration file.                                   |
-| package.json                       | NPM dependencies.                                            |
-| package-lock.json                  | Contains exact versions of NPM dependencies in package.json. |
+| **config**/passport.js                         | Passport Local and OAuth strategies, plus login middleware.    |
+| **controllers**/api.js                         | Controller for /api route and all api examples.                            |
+| **controllers**/contact.js                 | Controller for contact form.                                                                 |
+| **controllers**/home.js                        | Controller for home page (index).                                                        |
+| **controllers**/user.js                        | Controller for user account management.                                            |
+| **models**/User.js                                 | Mongoose schema and model for User.                                                    |
+| **public**/                                                | Static assets (fonts, css, js, img).                                                 |
+| **public**/**js**/application.js     | Specify client-side JavaScript dependencies.                                 |
+| **public**/**js**/main.js                    | Place your client-side JavaScript here.                                            |
+| **public**/**css**/main.scss             | Main stylesheet for your app.                                                                |
+| **public/css/themes**/default.scss | Some Bootstrap overrides to make it look prettier.                     |
+| **views/account**/                                 | Templates for *login, password reset, signup, profile*.            |
+| **views/api**/                                         | Templates for API Examples.                                                                    |
+| **views/partials**/flash.pug             | Error, info and success flash notifications.                                 |
+| **views/partials**/header.pug            | Navbar partial template.                                                                         |
+| **views/partials**/footer.pug            | Footer partial template.                                                                         |
+| **views**/layout.pug                             | Base template.                                                                                             |
+| **views**/home.pug                                 | Home page template.                                                                                    |
+| .dockerignore                                            | Folder and files ignored by docker usage.                                        |
+| .env.example                                             | Your API keys, tokens, passwords and database URI.                     |
+| .eslintrc                                                    | Rules for eslint linter.                                                                         |
+| .gitignore                                                 | Folder and files ignored by git.                                                         |
+| .travis.yml                                                | Configuration files for continuous integration.                            |
+| app.js                                                         | The main application file.                                                                     |
+| docker-compose.yml                                 | Docker compose configuration file.                                                     |
+| Dockerfile                                                 | Docker configuration file.                                                                     |
+| package.json                                             | NPM dependencies.                                                                                        |
+| package-lock.json                                    | Contains exact versions of NPM dependencies in package.json. |
 
 **Note:** There is no preference how you name or structure your views.
 You could place all your templates in a top-level `views` directory without
 having a nested folder structure, if that makes things easier for you.
-Just don't forget to update `extends ../layout`  and corresponding
+Just don't forget to update `extends ../layout`    and corresponding
 `res.render()` paths in controllers.
 
 List of Packages
 ----------------
 
-| Package                         | Description                                                             |
+| Package                                                 | Description                                                                                                                         |
 | ------------------------------- | ------------------------------------------------------------------------|
-| @octokit/rest                   | GitHub API library.                                                     |
-| bcrypt                          | Library for hashing and salting user passwords.                         |
-| body-parser                     | Node.js body parsing middleware.                                        |
-| chai                            | BDD/TDD assertion library.                                              |
-| chalk                           | Terminal string styling done right.                                     |
-| cheerio                         | Scrape web pages using jQuery-style syntax.                             |
-| clockwork                       | Clockwork SMS API library.                                              |
-| compression                     | Node.js compression middleware.                                         |
-| connect-mongo                   | MongoDB session store for Express.                                      |
-| dotenv                          | Loads environment variables from .env file.                             |
-| errorhandler                    | Development-only error handler middleware.                              |
-| eslint                          | Linter JavaScript.                                                      |
-| eslint-config-airbnb-base       | Configuration eslint by airbnb.                                         |
-| eslint-plugin-chai-friendly     | Makes eslint friendly towards Chai.js 'expect' and 'should' statements. |
-| eslint-plugin-import            | ESLint plugin with rules that help validate proper imports.             |
-| express                         | Node.js web framework.                                                  |
-| express-flash                   | Provides flash messages for Express.                                    |
-| express-session                 | Simple session middleware for Express.                                  |
-| express-status-monitor          | Reports real-time server metrics for Express.                           |
-| fbgraph                         | Facebook Graph API library.                                             |
-| instagram-node                  | Instagram API library.                                                  |
-| lastfm                          | Last.fm API library.                                                    |
-| lob                             | Lob API library.                                                        |
-| lodash                          | A utility library for working with arrays, numbers, objects, strings.   |
-| lusca                           | CSRF middleware.                                                        |
-| mailchecker                     | Verifies that an email address is valid and not a disposable address.   |
-| mocha                           | Test framework.                                                         |
-| moment                          | Parse, validate, compute dates and times.                               |
-| mongoose                        | MongoDB ODM.                                                            |
-| morgan                          | HTTP request logger middleware for node.js.                             |
-| multer                          | Node.js middleware for handling `multipart/form-data`.                  |
-| node-foursquare                 | Foursquare API library.                                                 |
-| node-sass                       | Node.js bindings to libsass.                                            |
-| node-sass-middleware            | Sass middleware compiler.                                               |
-| nyc                             | Coverage test.                                                          |
-| nodemailer                      | Node.js library for sending emails.                                     |
-| node-quickbooks                 | Quickbooks API library.                                                 |
-| passport                        | Simple and elegant authentication library for node.js.                  |
-| passport-facebook               | Sign-in with Facebook plugin.                                           |
-| passport-github                 | Sign-in with GitHub plugin.                                             |
-| passport-google-oauth           | Sign-in with Google plugin.                                             |
-| passport-instagram              | Sign-in with Instagram plugin.                                          |
-| passport-linkedin-oauth2        | Sign-in with LinkedIn plugin.                                           |
-| passport-local                  | Sign-in with Username and Password plugin.                              |
-| passport-openid                 | Sign-in with OpenId plugin.                                             |
-| passport-oauth                  | Allows you to set up your own OAuth 1.0a and OAuth 2.0 strategies.      |
-| passport-oauth2-refresh         | A library to refresh OAuth 2.0 access tokens using refresh tokens.      |
-| passport-snapchat               | Sign-in with Snapchat plugin.                                           |
-| passport-twitter                | Sign-in with Twitter plugin.                                            |
-| passport-twitch-new             | Sign-in with Twitch plugin.                                             |
-| paypal-rest-sdk                 | PayPal APIs library.                                                    |
-| pug                             | Template engine for Express.                                            |
-| sinon                           | Test spies, stubs and mocks for JavaScript.                             |
-| stripe                          | Offical Stripe API library.                                             |
-| supertest                       | HTTP assertion library.                                                 |
-| tumblr.js                       | Tumblr API library.                                                     |
-| twilio                          | Twilio API library.                                                     |
-| twit                            | Twitter API library.                                                    |
-| validator                       | A library of string validators and sanitizers.                          |
+| @octokit/rest                                     | GitHub API library.                                                                                                         |
+| bcrypt                                                    | Library for hashing and salting user passwords.                                                 |
+| body-parser                                         | Node.js body parsing middleware.                                                                                |
+| chai                                                        | BDD/TDD assertion library.                                                                                            |
+| chalk                                                     | Terminal string styling done right.                                                                         |
+| cheerio                                                 | Scrape web pages using jQuery-style syntax.                                                         |
+| clockwork                                             | Clockwork SMS API library.                                                                                            |
+| compression                                         | Node.js compression middleware.                                                                                 |
+| connect-mongo                                     | MongoDB session store for Express.                                                                            |
+| dotenv                                                    | Loads environment variables from .env file.                                                         |
+| errorhandler                                        | Development-only error handler middleware.                                                            |
+| eslint                                                    | Linter JavaScript.                                                                                                            |
+| eslint-config-airbnb-base             | Configuration eslint by airbnb.                                                                                 |
+| eslint-plugin-chai-friendly         | Makes eslint friendly towards Chai.js 'expect' and 'should' statements. |
+| eslint-plugin-import                        | ESLint plugin with rules that help validate proper imports.                         |
+| express                                                 | Node.js web framework.                                                                                                    |
+| express-flash                                     | Provides flash messages for Express.                                                                        |
+| express-session                                 | Simple session middleware for Express.                                                                    |
+| express-status-monitor                    | Reports real-time server metrics for Express.                                                     |
+| fbgraph                                                 | Facebook Graph API library.                                                                                         |
+| instagram-node                                    | Instagram API library.                                                                                                    |
+| lastfm                                                    | Last.fm API library.                                                                                                        |
+| lob                                                         | Lob API library.                                                                                                                |
+| lodash                                                    | A utility library for working with arrays, numbers, objects, strings.     |
+| lusca                                                     | CSRF middleware.                                                                                                                |
+| mailchecker                                         | Verifies that an email address is valid and not a disposable address.     |
+| mocha                                                     | Test framework.                                                                                                                 |
+| moment                                                    | Parse, validate, compute dates and times.                                                             |
+| mongoose                                                | MongoDB ODM.                                                                                                                        |
+| morgan                                                    | HTTP request logger middleware for node.js.                                                         |
+| multer                                                    | Node.js middleware for handling `multipart/form-data`.                                    |
+| node-foursquare                                 | Foursquare API library.                                                                                                 |
+| node-sass                                             | Node.js bindings to libsass.                                                                                        |
+| node-sass-middleware                        | Sass middleware compiler.                                                                                             |
+| nyc                                                         | Coverage test.                                                                                                                    |
+| nodemailer                                            | Node.js library for sending emails.                                                                         |
+| node-quickbooks                                 | Quickbooks API library.                                                                                                 |
+| passport                                                | Simple and elegant authentication library for node.js.                                    |
+| passport-facebook                             | Sign-in with Facebook plugin.                                                                                     |
+| passport-github                                 | Sign-in with GitHub plugin.                                                                                         |
+| passport-google-oauth                     | Sign-in with Google plugin.                                                                                         |
+| passport-instagram                            | Sign-in with Instagram plugin.                                                                                    |
+| passport-linkedin-oauth2                | Sign-in with LinkedIn plugin.                                                                                     |
+| passport-local                                    | Sign-in with Username and Password plugin.                                                            |
+| passport-openid                                 | Sign-in with OpenId plugin.                                                                                         |
+| passport-oauth                                    | Allows you to set up your own OAuth 1.0a and OAuth 2.0 strategies.            |
+| passport-oauth2-refresh                 | A library to refresh OAuth 2.0 access tokens using refresh tokens.            |
+| passport-snapchat                             | Sign-in with Snapchat plugin.                                                                                     |
+| passport-twitter                                | Sign-in with Twitter plugin.                                                                                        |
+| passport-twitch-new                         | Sign-in with Twitch plugin.                                                                                         |
+| paypal-rest-sdk                                 | PayPal APIs library.                                                                                                        |
+| pug                                                         | Template engine for Express.                                                                                        |
+| sinon                                                     | Test spies, stubs and mocks for JavaScript.                                                         |
+| stripe                                                    | Offical Stripe API library.                                                                                         |
+| supertest                                             | HTTP assertion library.                                                                                                 |
+| tumblr.js                                             | Tumblr API library.                                                                                                         |
+| twilio                                                    | Twilio API library.                                                                                                         |
+| twit                                                        | Twitter API library.                                                                                                        |
+| validator                                             | A library of string validators and sanitizers.                                                    |
 
 Useful Tools and Resources
 --------------------------
@@ -534,7 +534,7 @@ Recommended Client-side Libraries
 - [Offline.js](http://github.hubspot.com/offline/docs/welcome/) - Detect when user's internet connection goes offline.
 - [Alertify.js](http://fabien-d.github.io/alertify.js/) - Sweet looking alerts and browser dialogs.
 - [selectize.js](http://selectize.github.io/selectize.js) - Styleable select elements and input tags.
-- [drop.js](http://github.hubspot.com/drop/docs/welcome/) -  Powerful Javascript and CSS library for creating dropdowns and other floating displays.
+- [drop.js](http://github.hubspot.com/drop/docs/welcome/) -    Powerful Javascript and CSS library for creating dropdowns and other floating displays.
 - [scrollReveal.js](https://github.com/jlmakes/scrollReveal.js) - Declarative on-scroll reveal animations.
 
 Pro Tips
@@ -571,9 +571,9 @@ problem connecting to MongoDB:
 
 ```js
 mongoose.connection.on('error', (err) => {
-  console.error(err);
-  console.log('%s MongoDB connection error. Please make sure MongoDB is running.', chalk.red('✗'));
-  process.exit();
+    console.error(err);
+    console.log('%s MongoDB connection error. Please make sure MongoDB is running.', chalk.red('✗'));
+    process.exit();
 });
 ```
 You need to have a MongoDB server running before launching `app.js`. You can
@@ -649,9 +649,9 @@ Let's see how it looks. Create a new controller **escapeVelocity** inside `contr
 
 ```js
 exports.escapeVelocity = (req, res) => {
-  res.render('escape-velocity', {
-    title: 'Landing Page'
-  });
+    res.render('escape-velocity', {
+        title: 'Landing Page'
+    });
 };
 ```
 
@@ -688,9 +688,9 @@ Flash messages have a two-step process. You use `req.flash('errors', { msg: 'Err
 to create a flash message in your controllers, and then display them in your views:
 ```pug
 if messages.errors
-  .alert.alert-danger.fade.in
-    for error in messages.errors
-      div= error.msg
+    .alert.alert-danger.fade.in
+        for error in messages.errors
+            div= error.msg
 ```
 In the first step, `'errors'` is the name of a flash message, which should match the
 name of the property on `messages` object in your views. You place alert messages
@@ -702,8 +702,8 @@ returns all errors as an array of objects, where each object has a `msg` propert
 
 ```js
 [
-  { param: "name", msg: "Name is required", value: "<received input>" },
-  { param: "email", msg: "A valid email is required", value: "<received input>" }
+    { param: "name", msg: "Name is required", value: "<received input>" },
+    { param: "email", msg: "A valid email is required", value: "<received input>" }
 ]
 ```
 
@@ -722,9 +722,9 @@ req.flash('warning', { msg: 'You have exceeded 90% of your data usage' });
 **User Account Page (Example)**
 ```pug
 if messages.warning
-  .alert.alert-warning.fade.in
-    for warning in messages.warning
-      div= warning.msg
+    .alert.alert-warning.fade.in
+        for warning in messages.warning
+            div= warning.msg
 ```
 
 `partials/flash.pug` is a partial template that contains how flash messages
@@ -735,13 +735,13 @@ messages were scattered throughout each view that used flash messages
 The flash messages partial template is *included* in the `layout.pug`, along with footer and navigation.
 ```pug
 body
-    include partials/header
+        include partials/header
 
-    .container
-      include partials/flash
-      block content
+        .container
+            include partials/flash
+            block content
 
-    include partials/footer
+        include partials/footer
 ```
 
 If you have any further questions about flash messages,
@@ -764,10 +764,10 @@ It always goes from left to right. A user visits `/account` page. Then `isAuthen
 
 ```js
 exports.isAuthenticated = (req, res, next) => {
-  if (req.isAuthenticated()) {
-    return next();
-  }
-  res.redirect('/login');
+    if (req.isAuthenticated()) {
+        return next();
+    }
+    res.redirect('/login');
 };
 ```
 
@@ -776,9 +776,9 @@ next middleware until it reaches the last argument, which is a callback function
 
 ```js
 exports.getAccount = (req, res) => {
-  res.render('account/profile', {
-    title: 'Account Management'
-  });
+    res.render('account/profile', {
+        title: 'Account Management'
+    });
 };
 ```
 
@@ -798,20 +798,20 @@ app.get('/books', bookController.getBooks);
 
 ```js
 app.route('/books')
-  .get(bookController.getBooks)
-  .post(bookController.createBooks)
-  .put(bookController.updateBooks)
-  .delete(bookController.deleteBooks)
+    .get(bookController.getBooks)
+    .post(bookController.createBooks)
+    .put(bookController.updateBooks)
+    .delete(bookController.deleteBooks)
 ```
 
 And here is how a route would look if it required an *authentication* and an *authorization* middleware:
 
 ```js
 app.route('/api/twitter')
-  .all(passportConfig.isAuthenticated)
-  .all(passportConfig.isAuthorized)
-  .get(apiController.getTwitter)
-  .post(apiController.postTwitter)
+    .all(passportConfig.isAuthenticated)
+    .all(passportConfig.isAuthorized)
+    .get(apiController.getTwitter)
+    .post(apiController.postTwitter)
 ```
 
 Use whichever style that makes sense to you. Either one is acceptable. I think that chaining HTTP verbs on `app.route` is a very clean and elegant approach, but on the other hand, I can no longer see all my routes at a glance when you have one route per line.
@@ -821,7 +821,7 @@ Use whichever style that makes sense to you. Either one is acceptable. I think t
 const mongoose = require('mongoose');
 
 const bookSchema = new mongoose.Schema({
-  name: String
+    name: String
 });
 
 const Book = mongoose.model('Book', bookSchema);
@@ -837,9 +837,9 @@ module.exports = Book;
 const Book = require('../models/Book.js');
 
 exports.getBooks = (req, res) => {
-  Book.find((err, docs) => {
-    res.render('books', { books: docs });
-  });
+    Book.find((err, docs) => {
+        res.render('books', { books: docs });
+    });
 };
 ```
 
@@ -853,21 +853,21 @@ const bookController = require('./controllers/book');
 extends layout
 
 block content
-  .page-header
-    h3 All Books
+    .page-header
+        h3 All Books
 
-  ul
-    for book in books
-      li= book.name
+    ul
+        for book in books
+            li= book.name
 ```
 
 That's it! I will say that you could have combined Step 1, 2, 3 as following:
 
 ```js
 app.get('/books',(req, res) => {
-  Book.find((err, docs) => {
-    res.render('books', { books: docs });
-  });
+    Book.find((err, docs) => {
+        res.render('books', { books: docs });
+    });
 });
 ```
 
@@ -887,7 +887,7 @@ parsing websites using [Cheerio](https://github.com/cheeriojs/cheerio), etc.
 
 ### How do I use Socket.io with Hackathon Starter?
 [Dan Stroot](https://github.com/dstroot) submitted an excellent [pull request](https://github.com/dstroot/hackathon-starter/commit/0a632def1ce8da446709d92812423d337c977d75) that adds a real-time dashboard with socket.io.
-And as  much as I'd like to add it to the project, I think it violates one of the main
+And as    much as I'd like to add it to the project, I think it violates one of the main
 principles of the Hackathon Starter:
 > When I started this project, my primary focus was on simplicity and ease of use.
 > I also tried to make it as generic and reusable as possible to cover most use cases of
@@ -936,13 +936,13 @@ Add the following code at the end of `app.js`:
 
 ```js
 io.on('connection', (socket) => {
-  socket.emit('greet', { hello: 'Hey there browser!' });
-  socket.on('respond', (data) => {
-    console.log(data);
-  });
-  socket.on('disconnect', () => {
-    console.log('Socket disconnected');
-  });
+    socket.emit('greet', { hello: 'Hey there browser!' });
+    socket.on('respond', (data) => {
+        console.log(data);
+    });
+    socket.on('disconnect', () => {
+        console.log('Socket disconnected');
+    });
 });
 ```
 
@@ -975,11 +975,11 @@ your main template file, add this to `head` block.
 ```pug
 script(src='/socket.io/socket.io.js')
 script.
-    let socket = io.connect(window.location.href);
-    socket.on('greet', function (data) {
-      console.log(data);
-      socket.emit('respond', { message: 'Hey there, server!' });
-    });
+        let socket = io.connect(window.location.href);
+        socket.on('greet', function (data) {
+            console.log(data);
+            socket.emit('respond', { message: 'Hey there, server!' });
+        });
 ```
 
 **Note:** Notice the path of the `socket.io.js`, you don't actually
@@ -992,12 +992,12 @@ script code into `main.js`, inside the `$(document).ready()` function:
 ```js
 $(document).ready(function() {
 
-  // Place JavaScript code here...
-  let socket = io.connect(window.location.href);
-  socket.on('greet', function (data) {
-    console.log(data);
-    socket.emit('respond', { message: 'Hey there, server!' });
-  });
+    // Place JavaScript code here...
+    let socket = io.connect(window.location.href);
+    socket.on('greet', function (data) {
+        console.log(data);
+        socket.emit('respond', { message: 'Hey there, server!' });
+    });
 
 });
 ```
@@ -1120,15 +1120,15 @@ The class declaration creates a new class using prototype-based inheritance.
 
 ```js
 class Person {
-  constructor(name, age, gender) {
-    this.name   = name;
-    this.age    = age;
-    this.gender = gender;
-  }
+    constructor(name, age, gender) {
+        this.name     = name;
+        this.age        = age;
+        this.gender = gender;
+    }
 
-  incrementAge() {
-    this.age++;
-  }
+    incrementAge() {
+        this.age++;
+    }
 }
 ```
 
@@ -1170,11 +1170,11 @@ var MM = now.getMonth() + 1;
 var YYYY = now.getFullYear();
 
 if (DD < 10) {
-  DD = '0' + DD;
+    DD = '0' + DD;
 }
 
 if (MM < 10) {
-  MM = '0' + MM;
+    MM = '0' + MM;
 }
 
 console.log(MM + '-' + DD + '-' + YYYY); // 03-30-2016
@@ -1230,7 +1230,7 @@ moment().add(-1, 'days');
 #### Find all users:
 ```js
 User.find((err, users) => {
-  console.log(users);
+    console.log(users);
 });
 ```
 
@@ -1238,19 +1238,19 @@ User.find((err, users) => {
 ```js
 let userEmail = 'example@gmail.com';
 User.findOne({ email: userEmail }, (err, user) => {
-  console.log(user);
+    console.log(user);
 });
 ```
 
 #### Find 5 most recent user accounts:
 ```js
 User
-  .find()
-  .sort({ _id: -1 })
-  .limit(5)
-  .exec((err, users) => {
-    console.log(users);
-  });
+    .find()
+    .sort({ _id: -1 })
+    .limit(5)
+    .exec((err, users) => {
+        console.log(users);
+    });
 ```
 
 #### Get the total count of a field from all documents:
@@ -1260,8 +1260,8 @@ inefficient way would be to loop through each document and manually accumulate
 the count. Or you could use [MongoDB Aggregation Framework](https://docs.mongodb.org/manual/core/aggregation-introduction/) instead:
 
 ```js
-User.aggregate({ $group: { _id: null, total: { $sum: '$votes' } } }, (err, votesCount)  => {
-  console.log(votesCount.total);
+User.aggregate({ $group: { _id: null, total: { $sum: '$votes' } } }, (err, votesCount)    => {
+    console.log(votesCount.total);
 });
 ```
 :top: <sub>[**back to top**](#table-of-contents)</sub>
@@ -1286,7 +1286,7 @@ docker-compose up web
 
 ```
 
-To view the app, find your docker IP address + port 8080 ( this will typically be http://localhost:8080/ ).  To use a port other than 8080, you would need to modify the port in app.js, Dockerfile, and docker-compose.yml.
+To view the app, find your docker IP address + port 8080 ( this will typically be http://localhost:8080/ ).    To use a port other than 8080, you would need to modify the port in app.js, Dockerfile, and docker-compose.yml.
 
 
 Deployment
@@ -1304,8 +1304,8 @@ listed below.
 - Download and install [Heroku Toolbelt](https://toolbelt.heroku.com/)
 - In a terminal, run `heroku login` and enter your Heroku credentials
 - From *your app* directory run `heroku create`
-- Run `heroku addons:create mongolab`.  This will set up the mLab add-on and configure the `MONGODB_URI` environment variable in your Heroku app for you.
-- Lastly, do `git push heroku master`.  Done!
+- Run `heroku addons:create mongolab`.    This will set up the mLab add-on and configure the `MONGODB_URI` environment variable in your Heroku app for you.
+- Lastly, do `git push heroku master`.    Done!
 
 **Note:** To install Heroku add-ons your account must be verified.
 
@@ -1326,12 +1326,12 @@ listed below.
 - Now, to access your database you need to create a DB user. To create a new MongoDB user, from the **Clusters view**, select the **Security tab**
 - Under the **MongoDB Users** tab, click on **+Add New User**
 - Fill in a username and password and give it either **Atlas Admin** User Privilege
-- Next, you will need to create an IP address whitelist and obtain the connection URI.  In the Clusters view, under the cluster details (i.e. SANDBOX - Cluster0), click on the **CONNECT** button.
-- Under section **(1) Check the IP Whitelist**, click on **ALLOW ACCESS FROM ANYWHERE**. The form will add a field with `0.0.0.0/0`.  Click **SAVE** to save the `0.0.0.0/0` whitelist.
+- Next, you will need to create an IP address whitelist and obtain the connection URI.    In the Clusters view, under the cluster details (i.e. SANDBOX - Cluster0), click on the **CONNECT** button.
+- Under section **(1) Check the IP Whitelist**, click on **ALLOW ACCESS FROM ANYWHERE**. The form will add a field with `0.0.0.0/0`.    Click **SAVE** to save the `0.0.0.0/0` whitelist.
 - Under section **(2) Choose a connection method**, click on **Connect Your Application**
 - In the new screen, select **Node.js** as Driver and version **2.2.12 or later**. _*WARNING*_: Do not pick 3.0 or later since connect-mongo can't handle mongodb+srv:// connection strings.
-- Finally, copy the URI connection string and replace the URI in MONGODB_URI of `.env.example` with this URI string.  Make sure to replace the <PASSWORD> with the db User password that you created under the Security tab.
-- Note that after some of the steps in the Atlas UI, you may see a banner stating `We are deploying your changes`.  You will need to wait for the deployment to finish before using the DB in your application.
+- Finally, copy the URI connection string and replace the URI in MONGODB_URI of `.env.example` with this URI string.    Make sure to replace the <PASSWORD> with the db User password that you created under the Security tab.
+- Note that after some of the steps in the Atlas UI, you may see a banner stating `We are deploying your changes`.    You will need to wait for the deployment to finish before using the DB in your application.
 
 
 **Note:** As an alternative to MongoDB Atlas, there is also [Compose](https://www.compose.io/).
@@ -1341,7 +1341,7 @@ listed below.
 ### OpenShift
 
 <img src="http://www.opencloudconf.com/images/openshift_logo.png" width="200">
-**NOTE** *These instructions might be out of date due to changes in OpenShift. Heroku is currently a good free alternative.  If you the new process, please feel free to help us update this page*
+**NOTE** *These instructions might be out of date due to changes in OpenShift. Heroku is currently a good free alternative.    If you the new process, please feel free to help us update this page*
 
 - First, install this Ruby gem: `sudo gem install rhc` :gem:
 - Run `rhc login` and enter your OpenShift credentials
@@ -1361,7 +1361,7 @@ var PORT = process.env.OPENSHIFT_NODEJS_PORT || 8080;
 Then change `app.listen()` to:
 ```js
 app.listen(PORT, IP_ADDRESS,() => {
-  console.log(`Express server listening on port ${PORT} in ${app.settings.env} mode`);
+    console.log(`Express server listening on port ${PORT} in ${app.settings.env} mode`);
 });
 ```
 Add this to `package.json`, after *name* and *version*. This is necessary because, by default, OpenShift looks for `server.js` file. And by specifying `supervisor app.js` it will automatically restart the server when node.js process crashes.
@@ -1369,7 +1369,7 @@ Add this to `package.json`, after *name* and *version*. This is necessary becaus
 ```js
 "main": "app.js",
 "scripts": {
-  "start": "supervisor app.js"
+    "start": "supervisor app.js"
 },
 ```
 
@@ -1382,7 +1382,7 @@ Add this to `package.json`, after *name* and *version*. This is necessary becaus
 ### Azure
 
 <img src="https://upload.wikimedia.org/wikipedia/commons/f/ff/Windows_Azure_logo.png" width="200">
-**NOTE** *Beyond the initial 12 month trial of Azure, the platform does not seem to offer a free tier for hosting NodeJS apps.  If you are looking for a free tier service to host your app, Heroku might be a better choice at this point*
+**NOTE** *Beyond the initial 12 month trial of Azure, the platform does not seem to offer a free tier for hosting NodeJS apps.    If you are looking for a free tier service to host your app, Heroku might be a better choice at this point*
 
 - Login to [Windows Azure Management Portal](https://manage.windowsazure.com/)
 - Click the **+ NEW** button on the bottom left of the portal
@@ -1403,53 +1403,53 @@ Add this to `package.json`, after *name* and *version*. This is necessary becaus
 
 ## IBM Bluemix Cloud Platform
 
-**NOTE** *At this point it appears that Bluemix's free tier to host NodeJS apps is limited to 30 days.  If you are looking for a free tier service to host your app, Heroku might be a better choice at this point*
+**NOTE** *At this point it appears that Bluemix's free tier to host NodeJS apps is limited to 30 days.    If you are looking for a free tier service to host your app, Heroku might be a better choice at this point*
 
 1. Create a Bluemix Account
 
-    [Sign up](https://console.ng.bluemix.net/registration/?target=%2Fdashboard%2Fapps) for Bluemix, or use an existing account.
+        [Sign up](https://console.ng.bluemix.net/registration/?target=%2Fdashboard%2Fapps) for Bluemix, or use an existing account.
 
 1. Download and install the [Cloud Foundry CLI](https://github.com/cloudfoundry/cli) to push your applications to Bluemix.
 
 1. Create a `manifest.yml` file in the root of your application.
-  ```
-  applications:
-  - name:      <your-app-name>
-    host:      <your-app-host>
-    memory:    128M
-    services:
-    - myMongo-db-name
-  ```
+    ```
+    applications:
+    - name:            <your-app-name>
+        host:            <your-app-host>
+        memory:        128M
+        services:
+        - myMongo-db-name
+    ```
 
-  The host you use will determinate your application URL initially, e.g. `<host>.mybluemix.net`.
-  The service name 'myMongo-db-name' is a declaration of your MongoDB service.  If you are using other services like Watson for example, then you would declare them the same way.
+    The host you use will determinate your application URL initially, e.g. `<host>.mybluemix.net`.
+    The service name 'myMongo-db-name' is a declaration of your MongoDB service.    If you are using other services like Watson for example, then you would declare them the same way.
 
 1. Connect and login to Bluemix via the Cloud-foundry CLI
-  ```
-  $ cf login -a https://api.ng.bluemix.net
-  ```
+    ```
+    $ cf login -a https://api.ng.bluemix.net
+    ```
 
 1. Create a [MongoDB service](https://www.ng.bluemix.net/docs/#services/MongoDB/index.html#MongoDB)
-  ```
-  $ cf create-service mongodb 100 [your-service-name]
-  ```
-  **Note:** this is a free and experiment verion of MongoDB instance.
-  Use the MongoDB by Compose instance for production applications:
-  ```
-  $ cf create-service compose-for-mongodb Standard [your-service-name]'
-  ```
+    ```
+    $ cf create-service mongodb 100 [your-service-name]
+    ```
+    **Note:** this is a free and experiment verion of MongoDB instance.
+    Use the MongoDB by Compose instance for production applications:
+    ```
+    $ cf create-service compose-for-mongodb Standard [your-service-name]'
+    ```
 
 
 1. Push the application
 
-    ```
-    $ cf push
-    ```
-    ```
-    $ cf env <your-app-name >
-    (To view the *environment variables* created for your application)
+        ```
+        $ cf push
+        ```
+        ```
+        $ cf env <your-app-name >
+        (To view the *environment variables* created for your application)
 
-    ```
+        ```
 
 **Done**, now go to the staging domain (`<host>.mybluemix.net`) and see your app running.
 
@@ -1464,7 +1464,7 @@ Be sure to check out the full list of Watson services to forwarder enhance your 
 
 #### Watson catalog of services
 
-**<img src="https://wbi.mybluemix.net/icons/conversation.svg?version=2" width="25"> [Conversation](https://www.ibm.com/watson/services/conversation/)** -     Quickly build and deploy chatbots and virtual agents across a variety of channels, including mobile devices, messaging platforms, and even robots.
+**<img src="https://wbi.mybluemix.net/icons/conversation.svg?version=2" width="25"> [Conversation](https://www.ibm.com/watson/services/conversation/)** -         Quickly build and deploy chatbots and virtual agents across a variety of channels, including mobile devices, messaging platforms, and even robots.
 
 **<img src="https://wbi.mybluemix.net/icons/discovery.svg" width="25"> [Discovery](https://www.ibm.com/watson/services/discovery/)** - Unlock hidden value in data to find answers, monitor trends and surface patterns with the world’s most advanced cloud-native insight engine.
 
@@ -1491,7 +1491,7 @@ Be sure to check out the full list of Watson services to forwarder enhance your 
 
 ---
 
-###  Google Cloud Platform
+###    Google Cloud Platform
 <img src="https://avatars2.githubusercontent.com/u/2810941?v=3&s=64" width="64">
 
 - [Download and install Node.js](https://nodejs.org/)
@@ -1500,18 +1500,18 @@ Be sure to check out the full list of Watson services to forwarder enhance your 
 - Install and initialize the [Google Cloud SDK](https://cloud.google.com/sdk/docs/quickstarts)
 - Create an `app.yaml` file at the root of your `hackathon-starter` folder with the following contents:
 
-    ```yaml
-    runtime: nodejs
-    env: flex
-    manual_scaling:
-      instances: 1
-    ```
+        ```yaml
+        runtime: nodejs
+        env: flex
+        manual_scaling:
+            instances: 1
+        ```
 - Make sure you've set `MONGODB_URI` in `.env.example`
 - Run the following command to deploy the `hackathon-starter` app:
 
-    ```bash
-    gcloud app deploy
-    ```
+        ```bash
+        gcloud app deploy
+        ```
 - [Monitor your deployed app](https://console.cloud.google.com/appengine) in the Cloud Console
 - [View the logs](https://console.cloud.google.com/logs/viewer) for your app in the Cloud Console
 

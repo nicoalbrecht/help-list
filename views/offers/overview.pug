@@ -1,0 +1,96 @@
+extends ../layout
+
+block content
+    h3 Übersicht aller Angebote
+    hr
+    .row
+        .col-md-12
+            ul.nav.nav-pills.nav-justified(id="overview-tab-nav", role="tablist")
+                li.nav-item
+                    a.nav-link.font-weight-bold.active(data-toggle="listViewTab", href="#listViewTab", role="tab") Listenansicht
+                li.nav-item
+                    a.nav-link.font-weight-bold(data-toggle="mapViewTab", href="#mapViewTab", role="tab") Kartenansicht
+        p.col-md-12
+        .col-md-12
+            .tab-content
+                .tab-pane.active(id="listViewTab", role="tabpanel")
+                    form(id="filter-form")
+                        .row
+                            .col
+                                
+                                label.sr-only(for="categoryFilterSelect") Kategorie
+                                select.custom-select.mb-2.mr-sm-2(id="categoryFilterSelect", data-toggle="tooltip", data-placement="top", title="Kategorie")
+                                    option(selected) Kategorie
+                                    each category in categories
+                                        option(value=category.id) #{category.title}
+                            .col
+                                label.sr-only(for="locSearchRadiusInput") Umkreis
+                                .input-group.mb-2.mr-sm-2
+                                    input.form-control(type="number", id="locSearchRadiusInput", placeholder="Umkreis", data-toggle="tooltip", data-placement="top", title="Umkreis (in m)", value="2000")
+                                    .input-group-append
+                                        .input-group-text
+                                            i.fas.fa-bullseye
+                            .col
+                                label.sr-only(for="resultsPerPageSelect") Ergebnisse pro Seite
+                                select.custom-select.mb-2.mr-sm-2(id="resultsPerPageSelect", data-toggle="tooltip", data-placement="top", title="Ergebnisse pro Seite")
+                                    option(value="10") 10
+                                    option(value="25", selected) 25
+                                    option(value="50") 50
+                        .row
+                            .col
+                                label.sr-only(for="searchTermInput") Suche
+                                input.form-control.mb-2.mr-sm-2(type="text", id="searchTermInput", placeholder="Suchbergriff", data-toggle="tooltip", data-placement="top", title="Suche")
+                            .col
+                                label.sr-only(for="locSearchTermInput") Standort
+                                .input-group.mb-2.mr-sm-2
+                                    select.custom-select.mb-2.mr-sm-2(id="locSearchTermInput", placeholder="Adresse", data-toggle="tooltip", data-placement="top", title="Adresse")
+                                    .input-group-append
+                                        .input-group-text
+                                            i.fas.fa-search-location(id="locReadyIcon")
+                                            i.fas.fa-cog.fa-spin(id="locLoadingIcon")
+
+                    .accordion#offer-accordion
+                            each offer, index in offers
+                                .card
+                                    .card-header(id=offer.id+"-heading")
+                                        h6.mb-0
+                                            button.btn.btn-link.collapsed(type="button", data-toggle="accordion", data-target=index, data-expanded="false", data-controls=offer.id) #{offer.title}
+                                            span.badge.badge-secondary #{offer.category.title}
+                                    .collapse(data-parent="#offer-accordion", id="collaps-content-"+index, data-id=offer.id, aria-labelledby=offer.id+"-heading")
+                                        .card-body
+                                            .row
+                                                .col-md-4
+                                                    p Von: #{offer.provider.name}
+                                                .col-md-4
+                                                    p E-Mail: 
+                                                        if offer.provider.mail
+                                                            a(href="mailto:"+offer.provider.mail) #{offer.provider.mail}
+                                                        else
+                                                            span Keine E-Mail Adresse angegeben 
+                                                .col-md-4
+                                                    p Telefon: 
+                                                        if offer.provider.mail
+                                                            a(href="mailto:"+offer.provider.phone) #{offer.provider.phone}
+                                                        else
+                                                            span Keine Telefonnummer angegeben 
+                                            p.card-text #{offer.description}
+                    br
+                    nav
+                        ul.pagination.justify-content-center
+                            li.page-item
+                                a.page-link(href="#", aria-label="Vorherige Seite")
+                                    i.fas.fa-arrow-left
+                            li.page-item
+                                a.page-link(href="#", aria-label="Seite 1") 1
+                            li.page-item
+                                a.page-link(href="#", aria-label="Seite 2") 2
+                            li.page-item
+                                a.page-link(href="#", aria-label="Seite 3") 3
+                            li.page-item
+                                a.page-link(href="#", aria-label="Seite 4") 4
+                            li.page-item
+                                a.page-link(href="#", aria-label="Nächste Seite")
+                                    i.fas.fa-arrow-right
+                .tab-pane(id="mapViewTab", role="tabpanel")
+                    p Maps
+    script(src='/js/offer_list.js')
