@@ -71,12 +71,7 @@ app.use(session({
 }));
 app.use(flash());
 app.use((req, res, next) => {
-    if (req.path === '/api/upload') {
-        // Multer multipart/form-data handling needs to occur before the Lusca CSRF check.
-        next();
-    } else {
-        lusca.csrf()(req, res, next);
-    }
+    lusca.csrf()(req, res, next);
 });
 app.use(lusca.xframe('SAMEORIGIN'));
 app.use(lusca.xssProtection(true));
@@ -98,12 +93,12 @@ app.get('/offers/create', offersController.createOfferView);
 /**
  * API examples routes.
  */
-app.get('/api', apiController.getApi);
-app.post('/api/offer', apiController.createOffer);
-app.get('/api/offer', apiController.getOffers);
+app.post('/api/offer', apiController.offer.createOffer);
+app.get('/api/offer', apiController.offer.getOffers);
 app.get('/api/locAutoComplete/:input', apiController.locationAutocomplete);
-app.get('/api/getInDistance/:lat/:lon/:radius', apiController.getInDistance);
-app.get('/api/getInDistanceById/:id/:radius', apiController.getInDistanceById);
+app.get('/api/getInDistance/:lat/:lon/:radius', apiController.offer.getInDistance);
+app.get('/api/getInDistanceById/:id/:radius', apiController.offer.getInDistanceById);
+app.get('/api/offer/find', apiController.offer.findOffers);
 
 /**
  * Error Handler.

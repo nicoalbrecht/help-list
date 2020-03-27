@@ -11,7 +11,8 @@ exports.getOverview = async (req, res, next) => {
     res.render('offers/overview', {
         title: 'Angebots Übersicht',
         offers,
-        categories
+        categories,
+        google_map_api_key: process.env.GOOGLE_MAP_API_KEY
     });
 };
 

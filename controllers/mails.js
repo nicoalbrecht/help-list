@@ -9,12 +9,12 @@ exports.sendRequestChangeTokenMail = async (req, res) => {
         path: '/usr/sbin/sendmail'
     });
     const offer = await Offer.findById(req.params.id)
-    const msg = templates.OfferChangeTokenRequest(req.)
+    // const msg = templates.OfferChangeTokenRequest(req.)
     transporter.sendMail({
         from: '',
         to: '',
         subject: '',
-        html: msg
+        // html: msg
     });
 
     transporter.close();

@@ -5,3 +5,9 @@
 #locLoadingIcon {
     display: none;
 }
+
+#offers-loading {
+    text-align: center;
+    display: block;
+    margin: 100px auto;
+}

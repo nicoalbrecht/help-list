@@ -109,7 +109,7 @@ block content
                 google.maps.event.addListener(map, 'click', function (event) {
                     
                     if(marker) marker.setMap(null);
-                    console.log(event);
+                    console.log(event.latLng);
                     var _l = {
                         lat: event.latLng.lat(),
                         lng: event.latLng.lng(),

@@ -1,5 +1,8 @@
+/* eslint-disable dot-notation */
+/* eslint-disable quote-props */
 /* eslint-disable max-len */
 /* eslint-disable radix */
+
 const validator = require('validator');
 const axios = require('axios');
 const crypto = require('crypto');
@@ -94,5 +97,51 @@ exports.getInDistanceById = async (req, res) => {
         distance = locationUtils.haversineDistance(locationData.lng, locationData.lat, allOffers[i].location.long, allOffers[i].location.lat);
         if (!distance.error && distance <= radius && distance <= allOffers[i].location.radius) resOffers.push(allOffers[i]);
     }
+    return res.json(resOffers);
+};
+
+exports.findOffers = async (req, res) => {
+    const data = req.query;
+    const searchObj = {};
+    if (data.searchTerm) {
+        searchObj['$or'] = [
+            {'title': {'$regex': data.searchTerm, '$options': 'i'}},
+            {'description': {'$regex': data.searchTerm, '$options': 'i'}},
+            {'category.title': {'$regex': data.searchTerm, '$options': 'i'}},
+            {'provider.name': {'$regex': data.searchTerm, '$options': 'i'}},
+        ];
+    }
+    if (data.cat) searchObj['category'] = data.cat;
+    const offers = await Offer.find(searchObj).populate('category').exec();
+    let resOffers = [];
+    if (data.address) {
+        const locationData = await axios.get(`https://maps.googleapis.com/maps/api/place/details/json?place_id=${data.address}&key=${process.env.GOOGLE_MAP_API_KEY}&fields=name,geometry`)
+            .then((data) => {
+                if (data.data.status !== 'OK') {
+                    return data.data;
+                }
+                return data.data.result.geometry.location;
+            })
+            .catch((err) => err);
+        const radius = parseInt(data.radius);
+        let distance;
+        if (!locationData.lat || !locationData.lng) return res.json({error: true, msg: locationData});
+        for (let i = 0; i < offers.length; i++) {
+            distance = locationUtils.haversineDistance(locationData.lng, locationData.lat, offers[i].location.long, offers[i].location.lat);
+            if (!distance.error) console.log(distance, radius, offers[i].location.radius);
+            if (!distance.error && distance <= radius) {
+                if (offers[i].location.radius) {
+                    if (distance <= offers[i].location.radius) resOffers.push(offers[i]);
+                } else {
+                    resOffers.push(offers[i]);
+                }
+            } else if (distance.error) {
+                resOffers.push({error: distance.error, offer: offers[i]});
+            }
+        }
+    } else {
+        resOffers = offers;
+    }
+
     return res.json(resOffers);
 };

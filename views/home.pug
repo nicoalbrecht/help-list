@@ -11,7 +11,7 @@ block content
         .col-md-12
             h4 Neue Angebote:
             div.list-group
-                if
+                if latestOffers.length > 0
                     each offer in latestOffers
                         div.list-group-item
                             .d-flex.w-100.justify-content-between
